@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'semantic-ui-react';
 import Pokemon from './Pokemon';
 
-const Pokedex = ({ pokemons, releasePokemon }) => (
+const Pokedex = ({ pokemons, releasePokemon, updatePokemon }) => (
   <>
     <Table celled padded>
     <Table.Header color="red">
@@ -16,7 +16,12 @@ const Pokedex = ({ pokemons, releasePokemon }) => (
 
     <Table.Body>
       {
-        pokemons.map( p => <Pokemon key={p.id} {...p} releasePokemon={releasePokemon} /> )
+        pokemons.map( p => <Pokemon 
+          key={p.id} 
+          {...p} 
+          releasePokemon={releasePokemon}
+          updatePokemon={updatePokemon} 
+          /> )
       }
     </Table.Body>
     </Table>

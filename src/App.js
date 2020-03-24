@@ -25,6 +25,16 @@ class App extends Component {
     this.setState ({ pokemons: [newPokemon, ...this.state.pokemons ]})
   }
 
+  updatePokemon = (id, updatedPokemon) => {
+    const pokemons = this.state.pokemons.map( p => {
+      if(p.id === id) {
+        return updatedPokemon
+      }
+      return p
+    })
+    this.setState({ pokemons })
+  }
+
   releasePokemon =(id) => {
     const { pokemons } = this.state
     this.setState({ pokemons: pokemons.filter( p => p.id !== id ) })
@@ -38,7 +48,10 @@ class App extends Component {
         Pokedex
       </Header>
       <PokeForm addPokemon={this.addPokemon } />
-        <Pokedex pokemons={pokemons} releasePokemon = {this.releasePokemon}/>
+        <Pokedex pokemons={pokemons} 
+        releasePokemon ={this.releasePokemon}
+        updatePokemon ={this.updatePokemon}
+        />
       </>
     )
   }
